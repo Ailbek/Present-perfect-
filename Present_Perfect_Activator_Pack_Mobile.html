@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#1A3A2E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Present Perfect">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<title>Present Perfect · Activator Pack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" onerror="this.style.display='none'">
+<style>
+:root{
+  color-scheme:light dark;
+  --card:#fff;--hd:#1A3A2E;--alt:#fafbfa;--ok0:#eaf3ee;--no0:#fbeaea;
+  --hl2:#f2d98f;--bad:#c0504d;--dk:#1A3A2E;--md:#3B785D;
+  --amb:#F7E8C3;--rule:#D0A247;--ink:#1f2a25;--mut:#5d6b64;
+  --line:#e3e8e5;--bg:#f6f8f7;
+  --focus-ring:0 0 0 3px rgba(59,120,93,.3);
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme=light]){
+    --bg:#0f1714;--card:#16211c;--ink:#e7efe9;--mut:#9db0a5;
+    --line:#2a3a32;--hd:#bfe3cf;--md:#5fb08a;--amb:#4a3d1c;
+    --alt:#1a2621;--ok0:#1f3a2e;--no0:#3a1f1f;--hl2:#6b5a26;--bad:#e8827e;
+  }
+}
+:root[data-theme=dark]{--bg:#0f1714;--card:#16211c;--ink:#e7efe9;--mut:#9db0a5;--line:#2a3a32;--hd:#bfe3cf;--md:#5fb08a;--amb:#4a3d1c;--alt:#1a2621;--ok0:#1f3a2e;--no0:#3a1f1f;--hl2:#6b5a26;--bad:#e8827e}
+html{font-size:16px;scroll-behavior:smooth;-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.75;font-size:16px;-webkit-text-size-adjust:100%;min-height:100vh;display:flex;flex-direction:column}
+.wrap{max-width:820px;margin:0 auto;padding:0 15px 40px;flex:1;width:100%}
+header.top{background:var(--dk);color:#fff;padding:28px 15px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+header.top .in{max-width:820px;margin:0 auto}
+.tag{display:inline-block;background:var(--md);color:#fff;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 11px;border-radius:20px}
+h1{font-size:28px;line-height:1.3;margin:14px 0 6px;font-weight:700}
+.meta{opacity:.8;font-size:13px}
+.task{background:var(--card);border-left:5px solid var(--md);border-radius:var(--radius-sm);padding:16px 20px;margin:26px 0 8px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.task b{display:block;color:var(--md);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.task p{margin:0;font-weight:500}
+.card{background:var(--card);border-radius:var(--radius);padding:26px 30px;margin-top:22px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.article p{margin:0 0 16px;text-align:justify}
+.article p:last-child{margin:0}
+.hl{background:var(--amb);border-bottom:2px solid var(--rule);padding:0 2px;border-radius:3px;font-weight:500;cursor:pointer;position:relative;touch-action:manipulation}
+.hl:hover,.hl:focus,.hl.active{background:var(--hl2);outline:none}
+#tip{position:fixed;z-index:200;max-width:90vw;background:var(--dk);color:#fff;font-size:13px;line-height:1.5;padding:12px 14px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.25);display:none;pointer-events:none;animation:tipIn .15s ease-out}
+@keyframes tipIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+#tip b{color:#F7E8C3;display:block;font-weight:600;margin-bottom:4px}
+#tip i{display:block;font-style:normal;color:#F7E8C3;font-size:12.5px}
+select.gap{font-family:inherit;font-size:16px;padding:14px 16px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);width:100%;min-height:52px;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%233B785D' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:20px;padding-right:48px}
+select.gap:focus{border-color:var(--md);outline:none;box-shadow:var(--focus-ring)}
+.blank{color:var(--mut);letter-spacing:1px}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.opt{background:var(--card);border:1.5px solid var(--line);border-radius:10px;padding:16px 18px;font-size:16px;color:var(--ink);min-height:52px;min-width:52px;display:block;width:100%;text-align:left;margin-bottom:8px;transition:border-color .15s,background .15s}
+.opt:active{transform:scale(.99)}
+.opt.sel{border-color:var(--md);background:var(--ok0);font-weight:600}
+.q.ok select,.q.ok .opt.sel{border-color:var(--md);background:var(--ok0)}
+.q.no select,.q.no .opt.sel{border-color:var(--bad);background:var(--no0)}
+.fb{display:block;font-size:13px;margin-top:6px;font-weight:600;min-height:18px}
+.q.ok .fb{color:var(--md)} .q.no .fb{color:var(--bad)}
+table.kp{width:100%;border-collapse:collapse;font-size:14px}
+table.kp td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+table.kp td:first-child{font-weight:600;color:var(--hd);width:32%}
+table.kp tr:nth-child(even) td{background:var(--alt)}
+.bank{display:flex;flex-wrap:wrap;gap:8px;background:var(--bg);border:1px dashed var(--md);border-radius:10px;padding:14px;margin-bottom:16px}
+.bank span{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:8px 14px;font-size:14px;font-weight:500;touch-action:manipulation}
+ol.ex{margin:0;padding-left:24px}
+ol.ex li{margin-bottom:16px}
+.opts{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.badge{background:var(--dk);color:#fff;font-weight:700;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;flex:none}
+.orig{color:var(--mut)}
+.use{font-size:13px;color:var(--md);font-weight:600}
+table.match{border-collapse:collapse;width:100%}
+table.match td{padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+td.lft{font-weight:600;color:var(--hd);width:34%}
+textarea{width:100%;font-family:inherit;font-size:16px;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0;resize:vertical;min-height:220px;background:var(--card);color:var(--ink)}
+textarea:focus{border-color:var(--md);outline:none;box-shadow:var(--focus-ring)}
+.show{background:none;border:none;color:var(--md);font-weight:600;font-size:14px;padding:0;text-decoration:underline;min-height:44px}
+.model{display:none;background:var(--ok0);border-left:4px solid var(--md);border-radius:8px;padding:12px 16px;margin-top:12px;font-size:15px;line-height:1.7}
+.model.on{display:block}
+.bar{position:sticky;bottom:0;border-radius:14px 14px 0 0;background:var(--card);border-top:1px solid var(--line);padding:14px 18px;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;box-shadow:0 -4px 20px rgba(0,0,0,.08);margin-top:30px;padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+.btn{background:var(--dk);color:#fff;border:none;border-radius:10px;padding:14px 28px;font-size:15px;font-weight:600;min-height:52px;min-width:120px;transition:background .15s,transform .1s}
+.btn:active{transform:scale(.98)}
+.btn.ghost{background:var(--card);color:var(--hd);border:1.5px solid var(--hd)}
+#score{font-weight:700;color:var(--hd);font-size:16px;min-width:160px;text-align:center}
+.tabs{display:flex;gap:8px;margin:26px 0 0;flex-wrap:wrap;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.tabs a{text-decoration:none;color:var(--hd);font-weight:600;font-size:14px;background:var(--card);border:1.5px solid var(--line);padding:10px 18px;border-radius:20px;min-height:44px;display:flex;align-items:center}
+.tabs a:hover,.tabs a:focus{border-color:var(--md);outline:none;box-shadow:var(--focus-ring)}
+.tabs a.active{border-color:var(--md);background:var(--ok0)}
+.hint{font-size:13px;color:var(--mut);margin:10px 0 0}
+.qbox{background:var(--card);border-left:5px solid var(--rule);border-radius:10px;padding:16px 20px;margin:22px 0 0;font-weight:500}
+.qbox b{display:block;color:var(--rule);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.quote{font-style:italic;color:var(--ink)}
+ol.ex li.qq{margin-bottom:18px}
+.cloze p{margin:0 0 14px;line-height:2.2}
+.cloze .q{display:inline}
+.cloze .fb{display:inline;margin-left:6px;font-size:12px}
+.check{list-style:none;padding:0;margin:12px 0 16px}
+.check li{margin-bottom:12px}
+.check label{display:flex;gap:14px;align-items:center;cursor:pointer;min-height:48px;padding:6px 0}
+.check input{accent-color:var(--md);width:24px;height:24px;flex-shrink:0}
+#wc{font-size:14px;color:var(--mut);font-weight:600;margin-top:8px}
+.reveal{margin-top:14px}
+#model{display:none;margin-top:16px}
+#model.on{display:block}
+#model p{text-align:justify;margin:0 0 16px}
+.sub{color:var(--mut);font-size:14px;margin:0 0 18px}
+h2{font-size:20px;color:var(--hd);margin:0 0 6px}
+h3{font-size:16px;color:var(--hd);margin:0 0 6px}
+@media(max-width:480px){
+  .card{padding:18px 16px}
+  h1{font-size:24px}
+  .task{padding:14px 16px}
+  .qbox{padding:14px 16px}
+  .bank{gap:6px;padding:12px}
+  .bank span{font-size:13px;padding:6px 10px}
+  .wrap{padding:0 12px 30px}
+  header.top{padding:22px 12px 20px}
+  .hl{font-size:15px}
+  .article p{font-size:15px;text-align:left}
+  .check li{font-size:14px}
+  .opts{flex-direction:column}
+  .opt{width:100%;text-align:left;padding:14px 16px;font-size:16px;min-height:52px}
+  .bar{flex-direction:column;gap:10px;padding:14px 16px}
+  .btn{width:100%;padding:16px;font-size:16px;min-height:52px}
+  .tabs{gap:6px}
+  .tabs a{padding:8px 14px;font-size:13px}
+  table.kp td{padding:8px 6px;font-size:13px}
+  select.gap{font-size:16px;padding:14px 48px 14px 14px;min-height:52px}
+}
+@media(max-width:360px){
+  html{font-size:15px}
+  .card{padding:16px 14px}
+  .task{padding:12px 14px}
+}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@supports(-webkit-touch-callout:none){
+  .hl::after{content:'';position:absolute;bottom:-8px;left:0;right:0;height:16px}
+}
+.offline-banner{position:fixed;bottom:0;left:0;right:0;background:var(--dk);color:#fff;text-align:center;padding:10px;font-size:13px;z-index:1000;transform:translateY(100%);transition:transform .3s ease}
+.offline-banner.show{transform:translateY(0)}
+.install-banner{position:fixed;bottom:0;left:0;right:0;background:var(--md);color:#fff;text-align:center;padding:12px 16px;font-size:14px;z-index:1000;transform:translateY(100%);transition:transform .3s ease;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+.install-banner.show{transform:translateY(0)}
+.install-banner button{background:#fff;color:var(--md);border:none;border-radius:8px;padding:8px 16px;font-weight:600;font-size:14px;min-height:44px}
+.install-banner button.ghost{background:transparent;color:#fff;border:1px solid #fff}
+</style>
+</head><body>
+<div class="offline-banner" id="offlineBanner" role="status" aria-live="polite">📴 Offline mode — all data saved</div>
+<div class="install-banner" id="installBanner" role="status" aria-live="polite" hidden>
+  <span>Install for offline access & home screen</span>
+  <div style="display:flex;gap:8px">
+    <button class="ghost" id="installDismiss">Not now</button>
+    <button id="installBtn">Install</button>
+  </div>
+</div>
+<header class="top"><div class="in"><span class="tag">Grammar · Activator Pack</span>
+<h1>Present Perfect: Experience, Results and Time Up to Now</h1><div class="meta">Model text · 18 key forms · 50 exercises (Uzbek instructions)</div></div></header>
+<div class="wrap">
+<div class="task"><b>Lesson focus</b><p>Use the Present Perfect to connect the past with now: life experience, recent results and time that is not finished yet.</p></div>
+<div class="task" style="margin-top:10px"><b>Form & use</b><p style="font-weight:400">Form = <b style="display:inline;font-size:inherit;letter-spacing:0;text-transform:none">have / has + past participle</b><br>Experience – <span class="hl" tabindex="0" data-m="ever, never = at any time in your life (questions)" data-uz="hech qachon (so'roqda) / hech qachon">ever, never</span> · Result or news – <span class="hl" tabindex="0" data-m="just, already, yet = a very short time ago / earlier than expected / until now" data-uz="hozirgina / allaqachon / hali">just, already, yet</span> · Time up to now – <span class="hl" tabindex="0" data-m="for, since, so far, recently = period / starting point / up to now / lately" data-uz="muddat / boshlanish payti / hozirgacha / yaqinda">for, since, so far, recently</span></p></div>
+<nav class="tabs" role="tablist" aria-label="Sections">
+<a href="#article" role="tab" aria-selected="true" class="active" id="tab-article">Model text</a>
+<a href="#phrases" role="tab" aria-selected="false" id="tab-phrases">Key forms</a>
+<a href="#ex" role="tab" aria-selected="false" id="tab-ex">Exercises</a>
+<a href="#write" role="tab" aria-selected="false" id="tab-write">Write</a>
+</nav>
+<section class="card article" id="article" role="tabpanel" aria-labelledby="tab-article"><p>Dilnoza <span class="hl" tabindex="0" data-m="for + period: it started in the past and is still true now" data-uz="(…dan beri) o'rganib kelmoqda">has studied</span> English for eight months, and she <span class="hl" tabindex="0" data-m="already = earlier than expected" data-uz="allaqachon (…ga erishdi)">has already made</span> a lot of progress. She <span class="hl" tabindex="0" data-m="never = no experience up to now" data-uz="hech qachon bo'lmagan">has never been</span> abroad, but she <span class="hl" tabindex="0" data-m="life experience: the exact time is not important" data-uz="uchrashgan (hayotiy tajriba)">has met</span> many foreigners online. Since January, she <span class="hl" tabindex="0" data-m="since + starting point: from January until now" data-uz="ko'rib chiqqan">has watched</span> two English series, and she <span class="hl" tabindex="0" data-m="what she has done up to now" data-uz="o'qib chiqqan">has read</span> five short books.</p><p>Her teacher <span class="hl" tabindex="0" data-m="just = a very short time ago" data-uz="hozirgina bergan">has just given</span> her a new challenge: a speaking test next week. She <span class="hl" tabindex="0" data-m="negative + yet: not done, but expected" data-uz="hali tayyorlanmagan">hasn't prepared</span> for it yet, but she <span class="hl" tabindex="0" data-m="finished action, the result is visible now" data-uz="yozib qo'yg'an">has written</span> a list of useful phrases. Dilnoza <span class="hl" tabindex="0" data-m="the result now: she doesn't have it" data-uz="yo'qotgan (hozir yo'q)">has lost</span> her notebook, so she <span class="hl" tabindex="0" data-m="the result now: she has a new one" data-uz="sotib olgan (hozir bor)">has bought</span> a new one.</p><p><span class="hl" tabindex="0" data-m="up to now" data-uz="hozirgacha">So far</span>, she <span class="hl" tabindex="0" data-m="an amount up to now" data-uz="o'rganib chiqqan">has learned</span> more than 300 new words, and she <span class="hl" tabindex="0" data-m="a change up to now" data-uz="yaxshilagan">has improved</span> her pronunciation, too. Her friends <span class="hl" tabindex="0" data-m="recent news that matters now" data-uz="aytib bergan">have told</span> her that she <span class="hl" tabindex="0" data-m="a change you can see now" data-uz="o'zgarib qoldigan">has changed</span> a lot. She is very proud of what she <span class="hl" tabindex="0" data-m="what she has achieved in life so far" data-uz="erishgan">has achieved</span>.</p><p class="hint">Tap any highlighted phrase to see the rule and the Uzbek translation.</p></section>
+<section class="card" id="phrases" role="tabpanel" aria-labelledby="tab-phrases" hidden><h2>Key forms</h2><p class="sub">English · meaning · O'zbekcha</p><table class="kp"><tr><td>have / has + past participle</td><td>the form: I have seen, she has seen</td><td class="uz">shakli: have/has + fe'lning 3-shakli</td></tr><tr><td>haven't / hasn't + past participle</td><td>the negative form</td><td class="uz">inkor shakli</td></tr><tr><td>Have / Has + subject + past participle?</td><td>the question form</td><td class="uz">so'roq shakli</td></tr><tr><td>ever</td><td>at any time in your life (questions)</td><td class="uz">hech qachon (so'roqda)</td></tr><tr><td>never</td><td>at no time in your life</td><td class="uz">hech qachon</td></tr><tr><td>already</td><td>before now; earlier than expected</td><td class="uz">allaqachon</td></tr><tr><td>yet</td><td>until now (questions and negatives)</td><td class="uz">hali / allaqachon (so'roq va inkorda)</td></tr><tr><td>just</td><td>a very short time ago</td><td class="uz">hozirgina</td></tr><tr><td>recently / lately</td><td>in the last few days or weeks</td><td class="uz">yaqinda / so'nggi paytlarda</td></tr><tr><td>so far</td><td>up to now</td><td class="uz">hozirgacha</td></tr><tr><td>for + period</td><td>how long: for two years</td><td class="uz">muddat: ikki yil davomida</td></tr><tr><td>since + starting point</td><td>when it began: since 2020</td><td class="uz">boshlanish payti: 2020-yildan beri</td></tr><tr><td>this week / this year</td><td>a period that is not finished</td><td class="uz">shu hafta / shu yil (tugamagan davr)</td></tr><tr><td>How long have you…?</td><td>asks about the time up to now</td><td class="uz">qancha vaqtdan beri…?</td></tr><tr><td>have been to</td><td>visited and came back</td><td class="uz">bo'lib kelgan</td></tr><tr><td>have gone to</td><td>went there and is still there</td><td class="uz">ketib qolgan (hozir o'sha yerdur)</td></tr><tr><td>the result is visible now</td><td>use the Present Perfect when the result matters now</td><td class="uz">natija hozir ko'rinib turibdi</td></tr><tr><td>yesterday, in 2019, last year</td><td>finished time: use the Past Simple</td><td class="uz">tugagan vaqt: Past Simple ishlatiladi</td></tr></table></section>
+<div id="ex"></div>
+<section class="card" role="tabpanel" aria-labelledby="tab-ex"><div class="sec-head"><div class="badge">A</div><h2>Uzbek → English</h2></div><p class="sub">Choose the English word or phrase for each Uzbek one.</p><ol class="ex">
+<li class='q' data-ans="just">hozirgina → <select class='gap'><option value=''>— choose —</option><option>already</option><option>for</option><option>just</option><option>never</option><option>recently</option><option>since</option><option>so far</option><option>yet</option></select><span class='fb'></span></li>
+<li class='q' data-ans="already">allaqachon → <select class='gap'><option value=''>— choose —</option><option>already</option><option>for</option><option>just</option><option>never</option><option>recently</option><option>since</option><option>so far</option><option>yet</option></select><span class='fb'></span></li>
+<li class='q' data-ans="yet">hali (inkorda) → <select class='gap'><option value=''>— choose —</option><option>already</option><option>for</option><option>just</option><option>never</option><option>recently</option><option>since</option><option>so far</option><option>yet</option></select><span class='fb'></span></li>
+<li class='q' data-ans="never">hech qachon → <select class='gap'><option value=''>— choose —</option><option>already</option><option>for</option><option>just</option><option>never</option><option>recently</option><option>since</option><option>so far</option><option>yet</option></select><span class='fb'></span></li>
+<li class='q' data-ans="so far">hozirgacha → <select class='gap'><option value=''>— choose —</option><option>already</option><option>for</option><option>just</option><option>never</option><option>recently</option><option>since</option><option>so far</option><option>yet</option></select><span class='fb'></span></li>
+<li class='q' data-ans="since">…dan beri → <select class='gap'><option value=''>— choose —</option><option>already</option><option>for</option><option>just</option><option>never</option><option>recently</option><option>since</option><option>so far</option><option>yet</option></select><span class='fb'></span></li>
+<li class='q' data-ans="for">muddat davomida → <select class='gap'><option value=''>— choose —</option><option>already</option><option>for</option><option>just</option><option>never</option><option>recently</option><option>since</option><option>so far</option><option>yet</option></select><span class='fb'></span></li>
+<li class='q' data-ans="recently">yaqinda → <select class='gap'><option value=''>— choose —</option><option>already</option><option>for</option><option>just</option><option>never</option><option>recently</option><option>since</option><option>so far</option><option>yet</option></select><span class='fb'></span></li>
+</ol></section>
+<section class="card"><div class="sec-head"><div class="badge">B</div><h2>Complete the sentences</h2></div><p class="sub">Choose the phrase from the box that fits each gap. Use each phrase once.</p><div class="bank"><span>has already paid</span><span>has just left</span><span>has never tried</span><span>has visited</span><span>have lived</span><span>have lost</span><span>Have you seen</span><span>haven't finished</span></div><ol class="ex">
+<li class='q' data-ans="have lost">I can't get into the house because I <select class='gap'><option value=''>— choose —</option><option>has already paid</option><option>has just left</option><option>has never tried</option><option>has visited</option><option>have lived</option><option>have lost</option><option>Have you seen</option><option>haven't finished</option></select> my keys.<span class='fb'></span></li>
+<li class='q' data-ans="has visited">My sister <select class='gap'><option value=''>— choose —</option><option>has already paid</option><option>has just left</option><option>has never tried</option><option>has visited</option><option>have lived</option><option>have lost</option><option>Have you seen</option><option>haven't finished</option></select> Paris three times, and she loves it.<span class='fb'></span></li>
+<li class='q' data-ans="has just left">The manager isn't in the office. He <select class='gap'><option value=''>— choose —</option><option>has already paid</option><option>has just left</option><option>has never tried</option><option>has visited</option><option>have lived</option><option>have lost</option><option>Have you seen</option><option>haven't finished</option></select> for the airport.<span class='fb'></span></li>
+<li class='q' data-ans="haven't finished">We <select class='gap'><option value=''>— choose —</option><option>has already paid</option><option>has just left</option><option>has never tried</option><option>has visited</option><option>have lived</option><option>have lost</option><option>Have you seen</option><option>haven't finished</option></select> the homework yet, so we can't go out.<span class='fb'></span></li>
+<li class='q' data-ans="has never tried">My brother <select class='gap'><option value=''>— choose —</option><option>has already paid</option><option>has just left</option><option>has never tried</option><option>has visited</option><option>have lived</option><option>have lost</option><option>Have you seen</option><option>haven't finished</option></select> sushi, so he doesn't want to try it.<span class='fb'></span></li>
+<li class='q' data-ans="Have you seen"><select class='gap'><option value=''>— choose —</option><option>has already paid</option><option>has just left</option><option>has never tried</option><option>has visited</option><option>have lived</option><option>have lost</option><option>Have you seen</option><option>haven't finished</option></select> my brother today? I can't find him.<span class='fb'></span></li>
+<li class='q' data-ans="has already paid">Don't worry about the bill. Tom <select class='gap'><option value=''>— choose —</option><option>has already paid</option><option>has just left</option><option>has never tried</option><option>has visited</option><option>have lived</option><option>have lost</option><option>Have you seen</option><option>haven't finished</option></select> it.<span class='fb'></span></li>
+<li class='q' data-ans="have lived">They <select class='gap'><option value=''>— choose —</option><option>has already paid</option><option>has just left</option><option>has never tried</option><option>has visited</option><option>have lived</option><option>have lost</option><option>Have you seen</option><option>haven't finished</option></select> in this city since 2015.<span class='fb'></span></li>
+</ol></section>
+<section class="card"><div class="sec-head"><div class="badge">C</div><h2>Past participles</h2></div><p class="sub">Choose the correct past participle (the third form).</p><ol class="ex">
+<li class='q mcq' data-ans='1'>go → <span class=blank>______</span><div class='opts'><button type='button' class='opt' data-i='0'>a) went</button><button type='button' class='opt' data-i='1'>b) gone</button><button type='button' class='opt' data-i='2'>c) goed</button></div><span class='fb'></span></li>
+<li class='q mcq' data-ans='2'>write → <span class=blank>______</span><div class='opts'><button type='button' class='opt' data-i='0'>a) wrote</button><button type='button' class='opt' data-i='1'>b) writed</button><button type='button' class='opt' data-i='2'>c) written</button></div><span class='fb'></span></li>
+<li class='q mcq' data-ans='1'>see → <span class=blank>______</span><div class='opts'><button type='button' class='opt' data-i='0'>a) saw</button><button type='button' class='opt' data-i='1'>b) seen</button><button type='button' class='opt' data-i='2'>c) seed</button></div><span class='fb'></span></li>
+<li class='q mcq' data-ans='1'>take → <span class=blank>______</span><div class='opts'><button type='button' class='opt' data-i='0'>a) took</button><button type='button' class='opt' data-i='1'>b) taken</button><button type='button' class='opt' data-i='2'>c) taked</button></div><span class='fb'></span></li>
+<li class='q mcq' data-ans='0'>buy → <span class=blank>______</span><div class='opts'><button type='button' class='opt' data-i='0'>a) bought</button><button type='button' class='opt' data-i='1'>b) buyed</button><button type='button' class='opt' data-i='2'>c) boughten</button></div><span class='fb'></span></li>
+<li class='q mcq' data-ans='1'>eat → <span class=blank>______</span><div class='opts'><button type='button' class='opt' data-i='0'>a) ate</button><button type='button' class='opt' data-i='1'>b) eaten</button><button type='button' class='opt' data-i='2'>c) eated</button></div><span class='fb'></span></li>
+<li class='q mcq' data-ans='1'>do → <span class=blank>______</span><div class='opts'><button type='button' class='opt' data-i='0'>a) did</button><button type='button' class='opt' data-i='1'>b) done</button><button type='button' class='opt' data-i='2'>c) doed</button></div><span class='fb'></span></li>
+<li class='q mcq' data-ans='0'>begin → <span class=blank>______</span><div class='opts'><button type='button' class='opt' data-i='0'>a) begun</button><button type='button' class='opt' data-i='1'>b) began</button><button type='button' class='opt' data-i='2'>c) beginned</button></div><span class='fb'></span></li>
+</ol></section>
+<section class="card"><div class="sec-head"><div class="badge">D</div><h2>Present Perfect or Past Simple?</h2></div><p class="sub">Finished time (yesterday, in 2019, last summer) = Past Simple. Result or time up to now = Present Perfect.</p><ol class="ex">
+<li class='q mcq' data-ans='1'>I <span class=blank>______</span> my keys yesterday, so I called my sister.<div class='opts'><button type='button' class='opt' data-i='0'>a) have lost</button><button type='button' class='opt' data-i='1'>b) lost</button></div><span class='fb'></span></li>
+<li class='q mcq' data-ans='0'>She <span class=blank>______</span> in London for three years. She still lives there.<div class='opts'><button type='button' class='opt' data-i='0'>a) has lived</button><button type='button' class='opt' data-i='1'>b) lived</button></div><span class='fb'></span></li>
+<li class='q mcq' data-ans='1'>We <span class=blank>______</span> to Samarkand last summer.<div class='opts'><button type='button' class='opt' data-i='0'>a) have gone</button><button type='button' class='opt' data-i='1'>b) went</button></div><span class='fb'></span></li>
+<li class='q mcq' data-ans='0'>Ali <span class=blank>______</span> his homework, so he can play now.<div class='opts'><button type='button' class='opt' data-i='0'>a) has finished</button><button type='button' class='opt' data-i='1'>b) finished</button></div><span class='fb'></span></li>
+<li class='q mcq' data-ans='1'>I <span class=blank>______</span> that film in 2019.<div class='opts'><button type='button' class='opt' data-i='0'>a) have seen</button><button type='button' class='opt' data-i='1'>b) saw</button></div><span class='fb'></span></li>
+<li class='q mcq' data-ans='0'>They <span class=blank>______</span> a new house. Come and see it!<div class='opts'><button type='button' class='opt' data-i='0'>a) have bought</button><button type='button' class='opt' data-i='1'>b) bought</button></div><span class='fb'></span></li>
+</ol></section>
+<section class="card"><div class="sec-head"><div class="badge">E</div><h2>For or since?</h2></div><p class="sub">for = how long (a period). since = when it began (a starting point).</p><ol class="ex">
+<li class='q' data-ans="for">I have lived here <select class='gap'><option value=''>— choose —</option><option>for</option><option>since</option></select> three years.<span class='fb'></span></li>
+<li class='q' data-ans="since">She has worked here <select class='gap'><option value=''>— choose —</option><option>for</option><option>since</option></select> 2020.<span class='fb'></span></li>
+<li class='q' data-ans="since">We haven't seen him <select class='gap'><option value=''>— choose —</option><option>for</option><option>since</option></select> Monday.<span class='fb'></span></li>
+<li class='q' data-ans="for">They have known each other <select class='gap'><option value=''>— choose —</option><option>for</option><option>since</option></select> a long time.<span class='fb'></span></li>
+<li class='q' data-ans="since">It has rained <select class='gap'><option value=''>— choose —</option><option>for</option><option>since</option></select> last week.<span class='fb'></span></li>
+<li class='q' data-ans="for">He has waited <select class='gap'><option value=''>— choose —</option><option>for</option><option>since</option></select> ten minutes.<span class='fb'></span></li>
+<li class='q' data-ans="since">I have wanted to be a doctor <select class='gap'><option value=''>— choose —</option><option>for</option><option>since</option></select> I was a child.<span class='fb'></span></li>
+<li class='q' data-ans="for">She has studied <select class='gap'><option value=''>— choose —</option><option>for</option><option>since</option></select> two hours.<span class='fb'></span></li>
+</ol></section>
+<section class="card"><div class="sec-head"><div class="badge">F</div><h2>Already, yet, just, ever, never</h2></div><p class="sub">Choose the word that fits.</p><ol class="ex">
+<li class='q' data-ans="ever">Have you <select class='gap'><option value=''>— choose —</option><option>already</option><option>ever</option><option>just</option><option>never</option><option>yet</option></select> been to Japan?<span class='fb'></span></li>
+<li class='q' data-ans="yet">I haven't met the new teacher <select class='gap'><option value=''>— choose —</option><option>already</option><option>ever</option><option>just</option><option>never</option><option>yet</option></select>.<span class='fb'></span></li>
+<li class='q' data-ans="just">She has <select class='gap'><option value=''>— choose —</option><option>already</option><option>ever</option><option>just</option><option>never</option><option>yet</option></select> left. You missed her by one minute.<span class='fb'></span></li>
+<li class='q' data-ans="already">He has <select class='gap'><option value=''>— choose —</option><option>already</option><option>ever</option><option>just</option><option>never</option><option>yet</option></select> eaten, so he isn't hungry.<span class='fb'></span></li>
+<li class='q' data-ans="never">I have <select class='gap'><option value=''>— choose —</option><option>already</option><option>ever</option><option>just</option><option>never</option><option>yet</option></select> seen snow. I live in a hot country.<span class='fb'></span></li>
+<li class='q' data-ans="yet">Has the bus arrived <select class='gap'><option value=''>— choose —</option><option>already</option><option>ever</option><option>just</option><option>never</option><option>yet</option></select>?<span class='fb'></span></li>
+</ol></section>
+<section class="card"><div class="sec-head"><div class="badge">G</div><h2>Find the correct sentence</h2></div><p class="sub">Choose the sentence without a mistake.</p><ol class="ex">
+<li class='q mcq' data-ans='1'><div class='opts' style='flex-direction:column;align-items:flex-start'><button type='button' class='opt' data-i='0'>a) She has gone to the shop an hour ago.</button><button type='button' class='opt' data-i='1'>b) She went to the shop an hour ago.</button><button type='button' class='opt' data-i='2'>c) She has went to the shop an hour ago.</button></div><span class='fb'></span></li>
+<li class='q mcq' data-ans='2'><div class='opts' style='flex-direction:column;align-items:flex-start'><button type='button' class='opt' data-i='0'>a) Have you ever eat sushi?</button><button type='button' class='opt' data-i='1'>b) Did you ever ate sushi?</button><button type='button' class='opt' data-i='2'>c) Have you ever eaten sushi?</button></div><span class='fb'></span></li>
+<li class='q mcq' data-ans='1'><div class='opts' style='flex-direction:column;align-items:flex-start'><button type='button' class='opt' data-i='0'>a) I live here since 2018.</button><button type='button' class='opt' data-i='1'>b) I have lived here since 2018.</button><button type='button' class='opt' data-i='2'>c) I am living here since 2018.</button></div><span class='fb'></span></li>
+<li class='q mcq' data-ans='0'><div class='opts' style='flex-direction:column;align-items:flex-start'><button type='button' class='opt' data-i='0'>a) He hasn't called me yet.</button><button type='button' class='opt' data-i='1'>b) He didn't called me yet.</button><button type='button' class='opt' data-i='2'>c) He hasn't call me yet.</button></div><span class='fb'></span></li>
+<li class='q mcq' data-ans='1'><div class='opts' style='flex-direction:column;align-items:flex-start'><button type='button' class='opt' data-i='0'>a) They has just arrived.</button><button type='button' class='opt' data-i='1'>b) They have just arrived.</button><button type='button' class='opt' data-i='2'>c) They just have arrive.</button></div><span class='fb'></span></li>
+<li class='q mcq' data-ans='1'><div class='opts' style='flex-direction:column;align-items:flex-start'><button type='button' class='opt' data-i='0'>a) Have been you to Paris?</button><button type='button' class='opt' data-i='1'>b) Have you been to Paris?</button><button type='button' class='opt' data-i='2'>c) Did you been to Paris?</button></div><span class='fb'></span></li>
+</ol></section>
+<div class="bar" role="status" aria-live="polite"><button class="btn" onclick="check()">Check Answers</button><span id="score">Score: — / 50</span><button class="btn ghost" onclick="reset()">Reset</button></div>
+</section>
+<section class="card" id="write" role="tabpanel" aria-labelledby="tab-write" hidden><div class="sec-head"><div class="badge">H</div><h2>Your turn: write about your experience</h2></div><div class="qbox" style="margin:6px 0 10px;border:1px solid var(--line);border-left:5px solid var(--rule)"><b>Task</b>What have you done this year to improve your English (or another skill)? What haven't you done yet?</div><p class="sub" style="margin-bottom:0">Write at least 80 words. Tick each box when you have done it.</p><ul class="check"><li><label><input type="checkbox">At least 6 Present Perfect verbs</label></li><li><label><input type="checkbox">One sentence with already, never or just</label></li><li><label><input type="checkbox">One negative sentence with yet</label></li><li><label><input type="checkbox">One sentence with for or since</label></li><li><label><input type="checkbox">80 words or more</label></li></ul><textarea id="essay" placeholder="Write your text here…" aria-label="Your writing"></textarea><div id="wc">0 words</div><div class="reveal"><button type="button" class="btn ghost" id="mbtn">Show model answer</button></div><div id="model" class="article"><h3 style="margin:6px 0 10px">Model answer · 78 words</h3><p>This year I <span class="hl" tabindex="0" data-m="Present Perfect: have/has + past participle">have worked</span> hard on my English. I <span class="hl" tabindex="0" data-m="Present Perfect: have/has + past participle">have studied</span> for two hours every day since September, and I <span class="hl" tabindex="0" data-m="Present Perfect: have/has + past participle">have already finished</span> three grammar books. I <span class="hl" tabindex="0" data-m="Present Perfect: have/has + past participle">have never lived</span> abroad, but I <span class="hl" tabindex="0" data-m="Present Perfect: have/has + past participle">have made</span> friends from five countries online. So far, I <span class="hl" tabindex="0" data-m="Present Perfect: have/has + past participle">have passed</span> two exams, and I <span class="hl" tabindex="0" data-m="Present Perfect: have/has + past participle">have improved</span> my speaking a lot. I <span class="hl" tabindex="0" data-m="Present Perfect: have/has + past participle">haven't taken</span> the IELTS test yet, but I <span class="hl" tabindex="0" data-m="Present Perfect: have/has + past participle">have booked</span> a date for December. I <span class="hl" tabindex="0" data-m="Present Perfect: have/has + past participle">have learned</span> that regular practice really works.</p></div></section>
+</div><div id="tip"></div>
+<script>
+const tip=document.getElementById('tip');
+let tipTimeout=null;
+function showTip(el){
+  clearTimeout(tipTimeout);
+  tip.innerHTML='<b>'+el.textContent+'</b>'+el.dataset.m+(el.dataset.uz?'<i>UZ: '+el.dataset.uz+'</i>':'');
+  tip.style.display='block';
+  const r=el.getBoundingClientRect();
+  let x=r.left+window.scrollX;
+  const w=tip.offsetWidth;
+  const vw=document.documentElement.clientWidth;
+  if(x+w>window.scrollX+vw-10)x=window.scrollX+vw-w-10;
+  tip.style.left=Math.max(8,x)+'px';
+  tip.style.top=(r.bottom+window.scrollY+8)+'px';
+  el.classList.add('active');
+}
+function hideTip(){tip.style.display='none';document.querySelectorAll('.hl.active').forEach(e=>e.classList.remove('active'))}
+document.querySelectorAll('.hl').forEach(el=>{
+  el.addEventListener('mouseenter',()=>showTip(el));
+  el.addEventListener('mouseleave',hideTip);
+  el.addEventListener('click',e=>{e.stopPropagation();showTip(el);tipTimeout=setTimeout(hideTip,3000);});
+  el.addEventListener('focus',()=>showTip(el));
+  el.addEventListener('blur',hideTip);
+});
+document.addEventListener('click',hideTip);
+document.addEventListener('scroll',hideTip,{passive:true});
+document.querySelectorAll('.mcq').forEach(q=>q.querySelectorAll('.opt').forEach(b=>{
+  const selOpt=b, qEl=q;
+  function handleSelect(e){e.preventDefault();e.stopPropagation();
+    qEl.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+    selOpt.classList.add('sel');
+    qEl.classList.remove('ok','no');
+    qEl.querySelector('.fb').textContent='';
+  }
+  b.addEventListener('click',handleSelect);
+  b.addEventListener('touchend',handleSelect,{passive:false});
+}));
+document.querySelectorAll('select.gap').forEach(s=>{
+  s.addEventListener('change',()=>{
+    const q=s.closest('.q');
+    q.classList.remove('ok','no');
+    q.querySelector('.fb').textContent='';
+  });
+});
+document.querySelectorAll('.btn[onclick]').forEach(btn=>{
+  btn.addEventListener('touchend',e=>{e.preventDefault();btn.click();},{passive:false});
+});
+function check(){
+  let s=0;
+  document.querySelectorAll('.q').forEach(q=>{
+    let ok;
+    if(q.classList.contains('mcq')){
+      const sel=q.querySelector('.opt.sel');
+      ok=!!sel&&sel.dataset.i===q.dataset.ans;
+      q.querySelector('.fb').textContent=ok?'✓ Correct':'✗ Answer: '+q.querySelectorAll('.opt')[+q.dataset.ans].textContent;
+    }else{
+      const v=q.querySelector('select').value;
+      ok=v===q.dataset.ans;
+      if(!q.closest('.cloze'))q.querySelector('.fb').textContent=ok?'✓ Correct':'✗ Answer: '+q.dataset.ans;
+    }
+    q.classList.add(ok?'ok':'no');
+    q.classList.remove(ok?'no':'ok');
+    if(ok)s++;
+  });
+  document.getElementById('score').textContent='Score: '+s+' / '+document.querySelectorAll('.q').length;
+  if(s===document.querySelectorAll('.q').length){
+    setTimeout(()=>{document.getElementById('score').textContent='🎉 Score: '+s+' / '+document.querySelectorAll('.q').length+' - Well done!';},200);
+  }
+}
+function reset(){
+  document.querySelectorAll('.q').forEach(q=>{
+    q.classList.remove('ok','no');
+    q.querySelector('.fb').textContent='';
+  });
+  document.querySelectorAll('select.gap').forEach(s=>s.value='');
+  document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
+  document.getElementById('score').textContent='Score: — / '+document.querySelectorAll('.q').length;
+}
+const es=document.getElementById('essay'),wcEl=document.getElementById('wc');
+es.addEventListener('input',()=>{
+  const n=(es.value.trim().match(/\S+/g)||[]).length;
+  wcEl.textContent=n+' words'+(n>=80?' ✓':'');
+  wcEl.style.color=n>=80?'var(--md)':'var(--mut)';
+});
+document.getElementById('mbtn').addEventListener('click',e=>{
+  const m=document.getElementById('model');
+  m.classList.toggle('on');
+  e.target.textContent=m.classList.contains('on')?'Hide model answer':'Show model answer';
+});
+// Tab navigation
+const tabs=document.querySelectorAll('.tabs a');
+const panels=document.querySelectorAll('[role="tabpanel"]');
+tabs.forEach(tab=>{
+  tab.addEventListener('click',e=>{
+    e.preventDefault();
+    const target=tab.getAttribute('href').slice(1);
+    tabs.forEach(t=>{t.classList.remove('active');t.setAttribute('aria-selected','false');});
+    panels.forEach(p=>p.hidden=true);
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected','true');
+    document.getElementById(target).hidden=false;
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+// Offline detection
+const offlineBanner=document.getElementById('offlineBanner');
+function updateOnlineStatus(){
+  if(navigator.onLine){
+    offlineBanner.classList.remove('show');
+  }else{
+    offlineBanner.classList.add('show');
+  }
+}
+window.addEventListener('online',updateOnlineStatus);
+window.addEventListener('offline',updateOnlineStatus);
+updateOnlineStatus();
+// PWA Install prompt
+let deferredPrompt=null;
+const installBanner=document.getElementById('installBanner');
+const installBtn=document.getElementById('installBtn');
+const installDismiss=document.getElementById('installDismiss');
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredPrompt=e;
+  if(!window.matchMedia('(display-mode: standalone)').matches && !localStorage.getItem('installDismissed')){
+    setTimeout(()=>installBanner.hidden=false,3000);
+    setTimeout(()=>installBanner.classList.add('show'),3100);
+  }
+});
+installBtn.addEventListener('click',async()=>{
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    const {outcome}=await deferredPrompt.userChoice;
+    if(outcome==='accepted'){installBanner.classList.remove('show');setTimeout(()=>installBanner.hidden=true,300);}
+    deferredPrompt=null;
+  }
+});
+installDismiss.addEventListener('click',()=>{
+  installBanner.classList.remove('show');
+  setTimeout(()=>installBanner.hidden=true,300);
+  localStorage.setItem('installDismissed','true');
+});
+// Service Worker registration (works on HTTPS/localhost)
+if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost' || location.hostname==='127.0.0.1')){
+  navigator.serviceWorker.register('sw.js').catch(()=>{});
+}
+// Prevent zoom on input focus (iOS)
+document.querySelectorAll('input,select,textarea').forEach(el=>{
+  el.addEventListener('focus',()=>{el.style.fontSize='16px';});
+});
+// Save scroll position on unload
+window.addEventListener('beforeunload',()=>{
+  sessionStorage.setItem('scrollPos',window.scrollY);
+});
+window.addEventListener('load',()=>{
+  const pos=sessionStorage.getItem('scrollPos');
+  if(pos)window.scrollTo(0,parseInt(pos));
+});
+</script>
+</body></html>
